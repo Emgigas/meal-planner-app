@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e08b816e-defc-4496-bd96-31d6916f83bb" name="Changes" comment="Init build">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/meal-planner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/meal-planner.iml" afterDir="false" />
+    <list default="true" id="e08b816e-defc-4496-bd96-31d6916f83bb" name="Changes" comment="Build most of Django model for recipes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recipes/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipes/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recipes/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipes/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,11 +81,20 @@
       <option name="project" value="LOCAL" />
       <updated>1772966601995</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Build most of Django model for recipes">
+      <option name="closed" value="true" />
+      <created>1772980786572</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1772980786572</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init build" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init build" />
+    <MESSAGE value="Build most of Django model for recipes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Build most of Django model for recipes" />
   </component>
 </project>

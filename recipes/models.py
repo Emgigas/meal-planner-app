@@ -95,4 +95,70 @@ class RecipeIngredient(models.Model):
     Called a 'through table' or 'junction table' – it sits between
     Recipe and Ingredient and adds extra data to the relationship.
 
+    e.g. "Chocolate Cake requires 200g of plain flour, sifted"
+     recipe=ChocolateCake, ingredient=PlainFlour,
+     quantity=200, unit='g', notes='sifted'
     """
+
+    UNIT_CHOICES = [
+        ('g', 'grams'),
+        ('kg', 'kilograms'),
+        ('ml', 'millilitres'),
+        ('l', 'litres'),
+        ('tsp', 'teaspoon'),
+        ('tbsp', 'tablespoon'),
+        ('cup', 'cup'),
+        ('piece', 'piece(s)'),
+        ('pinch', 'pinch'),
+        ('handful', 'handful'),
+        ('to_taste', 'to taste'),
+    ]
+
+    recipe = models.ForeignKey(
+        Recipe,
+        on_delete=models.CASCADE,
+        related_name='recipe_ingredients'
+    )
+    ingredient = models.ForeignKey(
+        Ingredient,
+        on_delete=models.PROTECT,
+        related_name='recipe_ingredients'
+    )
+    quantity = models.DecimalField(
+        max_digits=8,
+        decimal_places=2,
+        null=True,
+        blank=True
+    )
+    unit = models.CharField(max_length=20, choices=UNIT_CHOICES, blank=True)
+    notes = models.CharField(
+        max_length=200,
+        blank=True,
+        help_text='Notes about ingredient – e.g. finely chopped, room temperature, chopped/diced')
+
+    class Meta:
+        ordering = ['ingredient__name']
+
+    def __str__(self):
+        qty_str = f"{self.quantity} {self.unit} if self.quantity else ''"
+        return f"{qty_str} {self.ingredient.name}".strip()
+
+class RecipeSteps(models.Model):
+    """
+    A single step in a recipe's method, stored separately so we can
+    number them, reorder them, and later add timers or images per step.
+    """
+    recipe = models.ForeignKey(
+        Recipe,
+        on_delete=models.CASCADE,
+        related_name='recipe_steps'
+    )
+    step_number = models.PositiveIntegerField()
+    instruction = models.TextField()
+
+    class Meta:
+        ordering = ['step_number']
+        unique_together = ['recipe', 'step_number']
+
+    def __str__(self):
+        return f"Step {self.step_number} {self.instruction[:50]}..."
